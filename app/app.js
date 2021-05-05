@@ -127,7 +127,6 @@ function getResponseContent(reply) {
 
 function setVal(orderId, res) {
     responseContent = "The order (" + orderId + ") is completed. Seller has proceed with the delivery.";
-    console.log(responseContent);
     res.end(getResponseContent(responseContent));
 }
 
