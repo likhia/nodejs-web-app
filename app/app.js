@@ -82,7 +82,7 @@ app.get('/', function (req, res) {
    qty = qty + "<option value=\"3\">3</option>";
    qty = qty + "</select>";
 
-   content = content + "<body>";
+   content = content + "<body><p>";
    content = content + "<form action = \"" + endpoint + "process_post\" method = \"POST\">";
    content = content + "<table width=\"20%\">"
    content = content + "<tr><td><label for=\"lfn\">Product </label> : </td> <td>" + product +  "</td></tr>";
@@ -99,6 +99,7 @@ app.get('/', function (req, res) {
 
    res.send(content);
 
+   console.log(getResponseContent('Test'));
    //res.sendFile( __dirname + "/" + "inputForm.html" );
 })
 
@@ -112,17 +113,22 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 
    createOrder(req,res);
 
-   //sleep(10);
-    
-   //console.log('responseContent ' + responseContent);
-   
    //res.end(JSON.stringify(response));
 })
+
+function getResponseContent(reply) {
+    var content = "<html>" + banner;
+    content = content + "<body><p/>"; 
+    content = content + "<label name=\"msg\">" + reply + "</label>"  ; 
+    content = content + "</body></html>"
+
+    return content;
+}
 
 function setVal(orderId, res) {
     responseContent = "The order (" + orderId + ") is completed. Seller has proceed with the delivery.";
     console.log(responseContent);
-    res.end(responseContent);
+    res.end(getResponseContent(responseContent));
 }
 
 function createOrder(req, res) {
@@ -155,9 +161,9 @@ function createOrder(req, res) {
 
         if (res2.statusCode != 200) {
             if(res2.statusCode == 504) {
-                res.end("The order has failed to proceed due to timeout.  Please try again.");
+                res.end(getResponseContent("The order has failed to proceed due to timeout.  Please try again."));
             } else {
-                res.end("The order has failed to proceed.  Please try again.");
+                res.end(getResponseContent("The order has failed to proceed.  Please try again."));
             }
             
         }
