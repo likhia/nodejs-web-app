@@ -34,7 +34,7 @@ app.get('/', function (req, res) {
    console.log(endpoint);
 
    var css = "<head><style>";
-   css = css + "body {background-color: yellow;}"
+   css = css + "body {background-color: lightgrey;}"
    css = css+ "label   {color: " + color + "; font:arial}";
    css = css + "</style></head><br>";
 
