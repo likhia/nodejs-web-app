@@ -144,7 +144,7 @@ function createOrder(req, res) {
 
     const options = {
         hostname: hostname,
-        port: 8080,
+        port: 80,
         path: '/order/accept',
         method: 'POST',
         headers: {
