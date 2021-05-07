@@ -134,6 +134,7 @@ function createOrder(req, res) {
     const http = require('http')
 
     var hostname = process.env.HOSTNAME || 'acceptorder.orders.svc.cluster.local'
+    var port = process.env.PORT || '8080'
 
     const data = JSON.stringify({
         'orderId' : '',
@@ -144,7 +145,7 @@ function createOrder(req, res) {
 
     const options = {
         hostname: hostname,
-        port: 80,
+        port: port,
         path: '/order/accept',
         method: 'POST',
         headers: {
@@ -169,8 +170,14 @@ function createOrder(req, res) {
 
         res2.on('data', d => {
             process.stdout.write(d)
-            var result = JSON.parse(d)
-            setVal(result.orderId,res);   
+
+            if (res2.statusCode == 200) {
+                var result = JSON.parse(d)
+                setVal(result.orderId,res);
+            } else {
+                res.end(getResponseContent("The order has failed to proceed.  Please try again."));
+            }
+               
         })
 
     })
