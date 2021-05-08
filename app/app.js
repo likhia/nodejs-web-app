@@ -17,6 +17,11 @@ var app = express();
 
 var banner = "<img src=\"https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xvdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80\" width=\"900\" height=\"200\"><br>";
 
+var css = "<head><style>";
+css = css + "body {background-color: lightgrey;}"
+css = css+ "label   {color: " + color + "; font:arial}";
+css = css + "</style></head><br>";
+
 let responseContent = '';
 
 var bodyParser = require('body-parser');
@@ -33,10 +38,7 @@ app.get('/', function (req, res) {
    console.log(color);
    console.log(endpoint);
 
-   var css = "<head><style>";
-   css = css + "body {background-color: lightgrey;}"
-   css = css+ "label   {color: " + color + "; font:arial}";
-   css = css + "</style></head><br>";
+   
 
    var script = "<script>";
    script = script + "function getTotalPrice() {";
@@ -117,7 +119,7 @@ app.post('/process_post', urlencodedParser, function (req, res) {
 })
 
 function getResponseContent(reply) {
-    var content = "<html>" + banner;
+    var content = "<html>" + css + banner;
     content = content + "<body><p/>"; 
     content = content + "<label name=\"msg\">" + reply + "</label>"  ; 
     content = content + "</body></html>"
