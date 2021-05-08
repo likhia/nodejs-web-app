@@ -21,7 +21,7 @@ var color = process.env.COLOR || 'black';
    
 var css = "<head><style>";
 css = css + "body {background-color: lightbrown;}"
-css = css+ "label   {color: " + black + "; font:arial}";
+css = css+ "label   {color: " + color + "; font:arial}";
 css = css + "</style></head><br>";
 
 let responseContent = '';
