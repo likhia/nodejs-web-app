@@ -17,9 +17,11 @@ var app = express();
 
 var banner = "<img src=\"https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xvdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80\" width=\"900\" height=\"200\"><br>";
 
+var color = process.env.COLOR || 'black';
+   
 var css = "<head><style>";
 css = css + "body {background-color: lightbrown;}"
-css = css+ "label   {color: " + color + "; font:arial}";
+css = css+ "label   {color: " + black + "; font:arial}";
 css = css + "</style></head><br>";
 
 let responseContent = '';
@@ -32,13 +34,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-   var color = process.env.COLOR || 'black';
    var endpoint = process.env.ENDPOINT || 'https://routelyh124fx-opentlc-mgr-codeready.apps.cluster-1ec0.1ec0.sandbox1350.opentlc.com/'
-
-   console.log(color);
-   console.log(endpoint);
-
-   
 
    var script = "<script>";
    script = script + "function getTotalPrice() {";
@@ -101,7 +97,6 @@ app.get('/', function (req, res) {
 
    res.send(content);
 
-   console.log(getResponseContent('Test'));
    //res.sendFile( __dirname + "/" + "inputForm.html" );
 })
 
