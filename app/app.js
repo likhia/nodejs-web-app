@@ -18,7 +18,7 @@ var app = express();
 var banner = "<img src=\"https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xvdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80\" width=\"900\" height=\"200\"><br>";
 
 var css = "<head><style>";
-css = css + "body {background-color: lightgrey;}"
+css = css + "body {background-color: lightbrown;}"
 css = css+ "label   {color: " + color + "; font:arial}";
 css = css + "</style></head><br>";
 
