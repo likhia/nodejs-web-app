@@ -20,7 +20,7 @@ var banner = "<img src=\"https://images.unsplash.com/photo-1445205170230-053b830
 var color = process.env.COLOR || 'black';
    
 var css = "<head><style>";
-css = css + "body {background-color: pink;}"
+css = css + "body {background-color: lightgrey;}"
 css = css+ "label   {color: " + color + "; font:arial}";
 css = css + "</style></head><br>";
 
