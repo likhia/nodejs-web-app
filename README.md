@@ -15,9 +15,10 @@ FROM [codenvy/node](https://hub.docker.com/r/codenvy/node/)
 | :------------- |:-------------| :-----|
 | 1      | Run | `cd ${current.project.path}/app && node app.js` |
 
-oc new-build  --name=makeorder  --binary --image-stream=nodejs:12-ubi8 -e COLOR=blue -e ENDPOINT=https://routek5j7o0pu-opentlc-mgr-codeready.apps.cluster-2439.2439.sandbox171.opentlc.com/
+oc new-build  --name=makeorder  --binary --image-stream=nodejs:12-ubi8 -e COLOR=blue -e ENDPOINT=	
+http://makeorder-orders.apps.cluster-9fe6.9fe6.sandbox996.opentlc.com
 
 oc start-build makeorder   --from-dir=.  --follow
 
-oc new-app makeorder:latest -e COLOR=blue -e ENDPOINT=https://routek5j7o0pu-opentlc-mgr-codeready.apps.cluster-2439.2439.sandbox171.opentlc.com/
+oc new-app makeorder:latest -e COLOR=blue -e ENDPOINT=http://makeorder-orders.apps.cluster-9fe6.9fe6.sandbox996.opentlc.com
 
